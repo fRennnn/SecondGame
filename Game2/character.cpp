@@ -22,3 +22,7 @@ Character::~Character() {
 	CollisionManager::instance()->destroy_collision_box(hit_box);
 	CollisionManager::instance()->destroy_collision_box(hurt_box);
 }
+
+/*
+Nmsl
+*/
