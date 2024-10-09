@@ -22,6 +22,9 @@
     <Filter Include="头文件\character">
       <UniqueIdentifier>{d5e641d0-d282-47db-b705-04319f3d7878}</UniqueIdentifier>
     </Filter>
+    <Filter Include="头文件\player">
+      <UniqueIdentifier>{bd12a4ce-7847-408d-8397-d766e2ffc13a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -38,6 +41,9 @@
     </ClCompile>
     <ClCompile Include="character.cpp">
       <Filter>头文件\character</Filter>
+    </ClCompile>
+    <ClCompile Include="player.cpp">
+      <Filter>头文件\player</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -76,6 +82,9 @@
     </ClInclude>
     <ClInclude Include="character.h">
       <Filter>头文件\character</Filter>
+    </ClInclude>
+    <ClInclude Include="player.h">
+      <Filter>头文件\player</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
