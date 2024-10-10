@@ -1,6 +1,8 @@
 #include"player.h"
 #include"resources_manager.h"
 #include"player_state_nodes.h"
+#include"bullet_time_manager.h"
+
 #include<cmath>
 
 Player::Player() {
@@ -83,13 +85,13 @@ Player::Player() {
 		AnimationGroup& animation_idle = animation_pool["idle"];
 
 		Animation& animation_idle_left = animation_idle.left;
-		animation_idle_left.set_interval(0.5f);
+		animation_idle_left.set_interval(0.15f);
 		animation_idle_left.set_loop(true);
 		animation_idle_left.set_anchor_mode(Animation::AnchorMode::BottomCentered);
 		animation_idle_left.add_frame(ResourcesManager::instance()->find_image("player_idle_left"), 5);
 
 		Animation& animation_idle_right = animation_idle.right;
-		animation_idle_right.set_interval(0.5f);
+		animation_idle_right.set_interval(0.15f);
 		animation_idle_right.set_loop(true);
 		animation_idle_right.set_anchor_mode(Animation::AnchorMode::BottomCentered);
 		animation_idle_right.add_frame(ResourcesManager::instance()->find_image("player_idle_right"),5);
@@ -244,10 +246,14 @@ void Player::on_input(const ExMessage& msg) {
 		is_attack_key_down = false;
 		break;
 	case WM_RBUTTONDOWN:
+		play_audio(_T("bullet_time"), false);
+		BulletTimeManager::instance()->set_status(BulletTimeManager::Status::Entering);
 		//To Do:进入子弹时间
 		break;
 	case WM_RBUTTONUP:
 		//To Do:退出子弹时间
+		stop_audio(_T("bullet_time"));
+		BulletTimeManager::instance()->set_status(BulletTimeManager::Status::Exiting);
 		break;
 	}
 }

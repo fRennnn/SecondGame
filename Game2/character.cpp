@@ -52,6 +52,7 @@ void Character::on_update(float delta) {
 	if (position.x >= getwidth())position.x = (float)getwidth();
 	
 	hurt_box->set_position(get_logic_center());
+
 	timer_invulnerable_status.on_update(delta);
 
 	if (is_invulnerable)

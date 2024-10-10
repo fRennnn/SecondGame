@@ -1,10 +1,8 @@
-﻿  player.cpp
+﻿  main.cpp
 D:\code\Game2\Game2\timer.h(37,16): warning C4244: “+=”: 从“float”转换到“int”，可能丢失数据
-  (编译源文件“player.cpp”)
+  (编译源文件“main.cpp”)
   
 D:\code\Game2\Game2\animation.h(52,23): warning C4244: “参数”: 从“float”转换到“int”，可能丢失数据
-  (编译源文件“player.cpp”)
+  (编译源文件“main.cpp”)
   
-D:\code\Game2\Game2\player.cpp(25,30): warning C4244: “参数”: 从“const float”转换到“int”，可能丢失数据
-D:\code\Game2\Game2\player.cpp(31,32): warning C4244: “参数”: 从“const float”转换到“int”，可能丢失数据
   Game2.vcxproj -> D:\code\Game2\x64\Debug\Game2.exe

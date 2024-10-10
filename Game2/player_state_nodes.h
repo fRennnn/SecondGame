@@ -12,7 +12,7 @@ public:
 	void on_exit() override;
 
 private:
-	Timer timer;
+	Timer timer; 
 
 private:
 	void update_hit_box_position();

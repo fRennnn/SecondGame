@@ -2,6 +2,7 @@
 #include"collision_manager.h"
 #include"resources_manager.h"
 #include"character_manager.h"
+#include"bullet_time_manager.h"
 
 #include<chrono>
 #include<thread>
@@ -31,7 +32,7 @@ int main(int argc, char** argv) {
 		MessageBox(hwnd, err_msg, _T("资源加载失败"), MB_OK | MB_ICONERROR);
 		return -1;
 	}
-	const nanoseconds frame_duration(1000000000 / 144);
+	const nanoseconds frame_duration(1000000000 / 60);
 	steady_clock::time_point last_tick = steady_clock::now();
 
 	ExMessage msg;
@@ -49,8 +50,10 @@ int main(int argc, char** argv) {
 		duration<float> delta = duration<float>(frame_start - last_tick);
 
 		// 处理更新
-		CharacterManager::instance()->on_update(delta.count());
+		float scaled_delta = BulletTimeManager::instance()->on_update(delta.count());
+		CharacterManager::instance()->on_update(scaled_delta);
 		CollisionManager::instance()->process_collide();  
+
 		setbkcolor(RGB(0, 0, 0));
 		cleardevice();
 
@@ -65,6 +68,8 @@ int main(int argc, char** argv) {
 		nanoseconds sleep_duration = frame_duration - (steady_clock::now() - frame_start);
 		if (sleep_duration > nanoseconds(0))
 			std::this_thread::sleep_for(sleep_duration);
+
+		//1000 / FPS - frame_delta_time
 	}
 
 	EndBatchDraw();

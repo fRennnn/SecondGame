@@ -51,6 +51,9 @@
     <ClCompile Include="player_state_nodes.cpp">
       <Filter>头文件\state</Filter>
     </ClCompile>
+    <ClCompile Include="bullet_time_manager.cpp">
+      <Filter>头文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="vector2.h">
@@ -97,6 +100,9 @@
     </ClInclude>
     <ClInclude Include="character_manager.h">
       <Filter>头文件\character</Filter>
+    </ClInclude>
+    <ClInclude Include="bullet_time_manager.h">
+      <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
