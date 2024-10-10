@@ -1,3 +1,8 @@
+D:\code\Game2\Game2\character.cpp;D:\code\Game2\Game2\x64\Debug\character.obj
+D:\code\Game2\Game2\character_manager.cpp;D:\code\Game2\Game2\x64\Debug\character_manager.obj
 D:\code\Game2\Game2\collision_manager.cpp;D:\code\Game2\Game2\x64\Debug\collision_manager.obj
 D:\code\Game2\Game2\main.cpp;D:\code\Game2\Game2\x64\Debug\main.obj
+D:\code\Game2\Game2\player.cpp;D:\code\Game2\Game2\x64\Debug\player.obj
+D:\code\Game2\Game2\player_state_nodes.cpp;D:\code\Game2\Game2\x64\Debug\player_state_nodes.obj
 D:\code\Game2\Game2\resources_manager.cpp;D:\code\Game2\Game2\x64\Debug\resources_manager.obj
+D:\code\Game2\Game2\state_machine.cpp;D:\code\Game2\Game2\x64\Debug\state_machine.obj

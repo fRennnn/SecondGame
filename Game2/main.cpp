@@ -1,8 +1,11 @@
-#include<graphics.h>
 #include"util.h"
+#include"collision_manager.h"
 #include"resources_manager.h"
+#include"character_manager.h"
+
 #include<chrono>
 #include<thread>
+#include<graphics.h>
 #pragma comment(lib,"MSIMG32.LIB")
 static  void draw_background() {
 	static IMAGE* img_bg = ResourcesManager::instance()->find_image("background");
@@ -39,17 +42,25 @@ int main(int argc, char** argv) {
 	while (!is_quit) {
 		//处理消息
 		while (peekmessage(&msg)) {
-
+			CharacterManager::instance()->on_input(msg);
 		}
+
 		steady_clock::time_point frame_start = steady_clock::now();
 		duration<float> delta = duration<float>(frame_start - last_tick);
+
 		// 处理更新
+		CharacterManager::instance()->on_update(delta.count());
+		CollisionManager::instance()->process_collide();  
 		setbkcolor(RGB(0, 0, 0));
 		cleardevice();
 
 		//处理绘图
 		draw_background();
+		CharacterManager::instance()->on_render();
+		CollisionManager::instance()->on_debug_render();
+
 		FlushBatchDraw();
+
 		last_tick = frame_start;
 		nanoseconds sleep_duration = frame_duration - (steady_clock::now() - frame_start);
 		if (sleep_duration > nanoseconds(0))

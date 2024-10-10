@@ -66,7 +66,7 @@ public:
 
 class PlayerRollState :public StateNode {
 public:
-	PlayerRollState() = default;
+	PlayerRollState() ;
 	~PlayerRollState() = default;
 
 

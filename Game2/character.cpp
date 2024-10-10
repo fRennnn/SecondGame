@@ -68,7 +68,7 @@ void Character::on_update(float delta) {
 void Character::on_render() {
 	if (!current_animation || (is_invulnerable && is_blink_invisible))return;
 	(is_facing_left ? current_animation->left : current_animation->right).on_render();
-}
+ }
 
 void Character::on_hurt(){}
 

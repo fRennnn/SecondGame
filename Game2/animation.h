@@ -92,9 +92,9 @@ public:
 		const Frame& frame = frame_list[idx_frame];
 
 		Rect rect_dst;
-		rect_dst.x = (int)position.x - frame.rect_src.w >> 1;
+		rect_dst.x = (int)position.x - (frame.rect_src.w >> 1);
 		rect_dst.y = (anchor_mode == AnchorMode::Centered) ?
-			(int)position.y - frame.rect_src.h >> 1 : (int)position.y - frame.rect_src.h;
+			(int)position.y - (frame.rect_src.h >> 1) : (int)position.y - frame.rect_src.h;
 		rect_dst.w = frame.rect_src.w;
 		rect_dst.h = frame.rect_src.h;
 
