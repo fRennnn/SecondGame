@@ -257,15 +257,15 @@ void Player::updata_attack_dir(int x, int y) {
 	if (angle >= -PI / 4 && angle < PI / 4)
 		attack_dir = AttackDir::Right;
 	else if(angle >= PI / 4 && angle < 3*PI / 4)
-		attack_dir = AttackDir::Down;
+		attack_dir = AttackDir::Up;
 	else if ((angle >= 3 * PI / 4 && angle <= PI) || (angle >= -PI && angle < -3*PI/4))
 		attack_dir = AttackDir::Left;
 	else 
-		attack_dir = AttackDir::Up;
+		attack_dir = AttackDir::Down;
 	/*
 			 UP
             \ /
-	LEFT     X	  RIGHT     
+	LEFT     X	  RIGHT      
 	        / \
 			DOWN
 	*/

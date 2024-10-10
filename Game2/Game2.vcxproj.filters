@@ -45,6 +45,12 @@
     <ClCompile Include="player.cpp">
       <Filter>头文件\player</Filter>
     </ClCompile>
+    <ClCompile Include="character_manager.cpp">
+      <Filter>头文件\character</Filter>
+    </ClCompile>
+    <ClCompile Include="player_state_nodes.cpp">
+      <Filter>头文件\state</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="vector2.h">
@@ -85,6 +91,12 @@
     </ClInclude>
     <ClInclude Include="player.h">
       <Filter>头文件\player</Filter>
+    </ClInclude>
+    <ClInclude Include="player_state_nodes.h">
+      <Filter>头文件\state</Filter>
+    </ClInclude>
+    <ClInclude Include="character_manager.h">
+      <Filter>头文件\character</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

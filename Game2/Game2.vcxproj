@@ -128,9 +128,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="character.cpp" />
+    <ClCompile Include="character_manager.cpp" />
     <ClCompile Include="collision_manager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="player.cpp" />
+    <ClCompile Include="player_state_nodes.cpp" />
     <ClCompile Include="resources_manager.cpp" />
     <ClCompile Include="state_machine.cpp" />
   </ItemGroup>
@@ -138,10 +140,12 @@
     <ClInclude Include="animation.h" />
     <ClInclude Include="atlas.h" />
     <ClInclude Include="character.h" />
+    <ClInclude Include="character_manager.h" />
     <ClInclude Include="collision_box.h" />
     <ClInclude Include="collision_layer.h" />
     <ClInclude Include="collision_manager.h" />
     <ClInclude Include="player.h" />
+    <ClInclude Include="player_state_nodes.h" />
     <ClInclude Include="resources_manager.h" />
     <ClInclude Include="state_machine.h" />
     <ClInclude Include="state_note.h" />
