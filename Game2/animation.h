@@ -32,7 +32,6 @@ public:
 
 	void reset() {
 		timer.restart();
-
 		idx_frame = 0;
 	}
 

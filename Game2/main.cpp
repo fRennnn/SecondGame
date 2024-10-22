@@ -18,6 +18,14 @@ static  void draw_background() {
 	};
 	putimage_ex(img_bg, &rect_dst);
 }
+static void draw_remain_hp() {
+	static IMAGE* img_ui_heart = ResourcesManager::instance()->find_image("ui_heart");
+	Rect rect_dst = { 0,10,img_ui_heart->getwidth(),img_ui_heart->getheight() };
+	for (int i = 0; i < CharacterManager::instance()->get_player()->get_hp(); ++i) {
+		rect_dst.x = 10 + i * 40;
+		putimage_ex(img_ui_heart, &rect_dst);
+	}
+}
 int main(int argc, char** argv) {
 	using namespace::std::chrono;
 	HWND hwnd = initgraph(1280, 720, EW_SHOWCONSOLE);
@@ -32,15 +40,19 @@ int main(int argc, char** argv) {
 		MessageBox(hwnd, err_msg, _T("资源加载失败"), MB_OK | MB_ICONERROR);
 		return -1;
 	}
-	const nanoseconds frame_duration(1000000000 / 60);
-	steady_clock::time_point last_tick = steady_clock::now();
 
-	ExMessage msg;
+	play_audio(_T("bgm"), true);
+
+	const nanoseconds frame_duration(1000000000 / 60);
+	steady_clock::time_point last_tick = steady_clock::now(); 
+
+	ExMessage msg; 
 	bool is_quit = false;
 
 	BeginBatchDraw();
 
 	while (!is_quit) {
+
 		//处理消息
 		while (peekmessage(&msg)) {
 			CharacterManager::instance()->on_input(msg);
@@ -61,7 +73,7 @@ int main(int argc, char** argv) {
 		draw_background();
 		CharacterManager::instance()->on_render();
 		CollisionManager::instance()->on_debug_render();
-
+		draw_remain_hp();
 		FlushBatchDraw();
 
 		last_tick = frame_start;
