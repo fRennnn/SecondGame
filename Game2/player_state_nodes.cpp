@@ -12,7 +12,7 @@ PlayerAttackState::PlayerAttackState() {
 }
 
 void PlayerAttackState::on_enter() {
-	std::cout << "State: Attack\n";
+	//std::cout << "State: Attack\n";
 	CharacterManager::instance()->get_player()->set_animation("attack");
 
 	Player* player = (Player*)CharacterManager::instance()->get_player();
@@ -56,7 +56,7 @@ void PlayerAttackState::on_exit() {
 	Player* player = (Player*)CharacterManager::instance()->get_player();
 	player->get_hit_box()->set_enabled(false);
 	player->set_attacking(false);
-	std::cout << "State: Attack Exit\n";
+	//std::cout << "State: Attack Exit\n";
 }
 
 void PlayerAttackState::update_hit_box_position() {
@@ -91,7 +91,7 @@ PlayerDeadState::PlayerDeadState() {
 }
 
 void PlayerDeadState::on_enter() {
-	std::cout << "State: Dead\n";
+	//std::cout << "State: Dead\n";
 	CharacterManager::instance()->get_player()->set_animation("dead");
 
 	play_audio(_T("player_dead"), false);
@@ -102,7 +102,7 @@ void PlayerDeadState::on_update(float delta) {
 }
 
 void PlayerFallState::on_enter() {
-	std::cout << "State: Fall\n";
+	//std::cout << "State: Fall\n";
 	CharacterManager::instance()->get_player()->set_animation("fall");
 }
 
@@ -122,7 +122,7 @@ void PlayerFallState::on_update(float delta) {
 }
 
 void PlayerIdleState::on_enter() {
-	std::cout << "State: Idle\n";
+	//std::cout << "State: Idle\n";
 	CharacterManager::instance()->get_player()->set_animation("idle");
 }
 
@@ -144,7 +144,7 @@ void PlayerIdleState::on_update(float delta){
 }
 
 void PlayerJumpState::on_enter() {
-	std::cout << "State: Jump\n";
+	//std::cout << "State: Jump\n";
 	CharacterManager::instance()->get_player()->set_animation("jump");
 
 	Player* player = (Player*)CharacterManager::instance()->get_player();
@@ -174,7 +174,7 @@ PlayerRollState::PlayerRollState() {
 }
 
 void PlayerRollState::on_enter() {
-	std::cout << "State: Roll\n";
+	//std::cout << "State: Roll\n";
 	CharacterManager::instance()->get_player()->set_animation("roll");
 
 	Player* player = (Player*)CharacterManager::instance()->get_player();
@@ -201,12 +201,12 @@ void PlayerRollState::on_update(float delta) {
 }
 
 void PlayerRollState::on_exit() {
-	std::cout << "State: Roll Exit\n";
+	//std::cout << "State: Roll Exit\n";
 	CharacterManager::instance()->get_player()->get_hurt_box()->set_enabled(true);
 }
 
 void PlayerRunState::on_enter() {
-	std::cout << "State: Run\n";
+	//std::cout << "State: Run\n";
 	CharacterManager::instance()->get_player()->set_animation("run");
 
 	play_audio(_T("player_run"), true);
@@ -229,5 +229,5 @@ void PlayerRunState::on_update(float delta) {
 
 void PlayerRunState::on_exit() {
 	stop_audio(_T("player_run"));
-	std::cout << "State: Run Exit\n";
+	//std::cout << "State: Run Exit\n";
 }

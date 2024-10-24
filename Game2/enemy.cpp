@@ -3,6 +3,7 @@
 #include"resources_manager.h"
 #include"collision_manager.h"
 #include"enemy_state_nodes.h"
+#include"iostream"
 Enemy::Enemy() {
 	is_facing_left = true;
 	position = { 1050,200 };
@@ -275,14 +276,21 @@ void Enemy::on_update(float delta) {
 		, barb_list.end(),
 		[](Barb* barb) {
 			bool can_remove = !barb->check_valid();
-			if (can_remove)delete barb;
+			if (can_remove) { 
+				delete barb;
+				std::cout << "Delete barb\n";
+			}
 			return can_remove;
 		}), barb_list.end());
 	sword_list.erase(std::remove_if(sword_list.begin()
 		, sword_list.end(),
 		[](Sword* sword) {
 			bool can_remove = !sword->check_valid();
-			if (can_remove)delete sword;
+			if (can_remove){
+				
+				delete sword;
+				std::cout << "Delete barb\n";
+			}
 			return can_remove;
 		}), sword_list.end());
 }

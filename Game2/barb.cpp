@@ -12,9 +12,9 @@ Barb::Barb() {
 	animation_loose.add_frame(ResourcesManager::instance()->find_atlas("barb_loose"));
 
 	animation_break.set_interval(0.1f);
-	animation_break.set_loop(true);
+	animation_break.set_loop(false);
 	animation_break.set_anchor_mode(Animation::AnchorMode::Centered);
-	animation_break.add_frame(ResourcesManager::instance()->find_atlas("barb_loose"));
+	animation_break.add_frame(ResourcesManager::instance()->find_atlas("barb_break"));
 	animation_break.set_on_finished([&]() {is_valid = false; });
 
 	collision_box = CollisionManager::instance()->create_collision_box();

@@ -7,7 +7,23 @@
 #include<chrono>
 #include<thread>
 #include<graphics.h>
+#include<iostream>
 #pragma comment(lib,"MSIMG32.LIB")
+struct SmartTimer {
+	std::chrono::time_point<std::chrono::steady_clock> start, end;
+	std::chrono::duration<float> duration;
+
+	SmartTimer() {
+		start = std::chrono::high_resolution_clock::now();
+	}
+	~SmartTimer() {
+		end = std::chrono::high_resolution_clock::now();
+		duration = end - start;
+
+		float s = duration.count();
+		std::cout << "Timer took " << s << " s" << std::endl;
+	}
+};
 static  void draw_background() {
 	static IMAGE* img_bg = ResourcesManager::instance()->find_image("background");
 	static Rect rect_dst = {
@@ -27,6 +43,9 @@ static void draw_remain_hp() {
 	}
 }
 int main(int argc, char** argv) {
+	int FPS = 0;
+	const double Sec = 1.0f;
+	double timer = 0;
 	using namespace::std::chrono;
 	HWND hwnd = initgraph(1280, 720, EW_SHOWCONSOLE);
 	SetWindowText(hwnd, _T("Hollow Katana"));
@@ -43,7 +62,7 @@ int main(int argc, char** argv) {
 
 	play_audio(_T("bgm"), true);
 
-	const nanoseconds frame_duration(1000000000 / 60);
+	const nanoseconds frame_duration(1000000000 / 144);
 	steady_clock::time_point last_tick = steady_clock::now(); 
 
 	ExMessage msg; 
@@ -52,17 +71,22 @@ int main(int argc, char** argv) {
 	BeginBatchDraw();
 
 	while (!is_quit) {
-
+		std::chrono::time_point<std::chrono::steady_clock> start, end;
+		std::chrono::duration<float> duration;
+		start = std::chrono::high_resolution_clock::now();
 		//处理消息
 		while (peekmessage(&msg)) {
 			CharacterManager::instance()->on_input(msg);
 		}
 
 		steady_clock::time_point frame_start = steady_clock::now();
-		duration<float> delta = duration<float>(frame_start - last_tick);
+		std::chrono::duration<float> delta = std::chrono::duration<float>(frame_start - last_tick);
 
 		// 处理更新
 		float scaled_delta = BulletTimeManager::instance()->on_update(delta.count());
+
+		//std::cout << delta.count() << "\n";
+		//0.018
 		CharacterManager::instance()->on_update(scaled_delta);
 		CollisionManager::instance()->process_collide();  
 
@@ -74,12 +98,24 @@ int main(int argc, char** argv) {
 		CharacterManager::instance()->on_render();
 		CollisionManager::instance()->on_debug_render();
 		draw_remain_hp();
+
 		FlushBatchDraw();
 
 		last_tick = frame_start;
 		nanoseconds sleep_duration = frame_duration - (steady_clock::now() - frame_start);
 		if (sleep_duration > nanoseconds(0))
 			std::this_thread::sleep_for(sleep_duration);
+
+		end = std::chrono::high_resolution_clock::now();
+		duration = end - start;
+
+		timer += duration.count();
+		FPS++;
+		if (timer > Sec) {
+			timer = 0;
+			std::cout << "FPS : " << FPS << "\n";
+			FPS = 0;
+		}
 
 		//1000 / FPS - frame_delta_time
 	}

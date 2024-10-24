@@ -121,8 +121,8 @@ static const std::vector<AtlasResInfo> atlas_info_list =
 	{"enemy_throw_silk_left",		_T(R"(resources\enemy\throw_silk\%d.png)"),		17},
 	{"enemy_throw_sword_left",		_T(R"(resources\enemy\throw_sword\%d.png)"),		16},
 
-	{"enemy_vfx_dash_in_air_left",_T(R"(resources\enemy\vfx_dash_in_air\%d.png)")},
-	{"enemy_vfx_dash_on_floor_left",_T(R"(resources\enemy\vfx_dash_on_floor\%d.png)")},
+	{"enemy_vfx_dash_in_air_left",_T(R"(resources\enemy\vfx_dash_in_air\%d.png)"),5},
+	{"enemy_vfx_dash_on_floor_left",_T(R"(resources\enemy\vfx_dash_on_floor\%d.png)"),6},
 };
 
 static inline bool check_image_valid(IMAGE* image) {

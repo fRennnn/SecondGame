@@ -1,24 +1,2 @@
-﻿  enemy.cpp
-D:\code\Game2\Game2\timer.h(37,16): warning C4244: “+=”: 从“float”转换到“int”，可能丢失数据
-  (编译源文件“enemy.cpp”)
-  
-D:\code\Game2\Game2\animation.h(51,23): warning C4244: “参数”: 从“float”转换到“int”，可能丢失数据
-  (编译源文件“enemy.cpp”)
-  
-  enemy_state_nodes.cpp
-D:\code\Game2\Game2\timer.h(37,16): warning C4244: “+=”: 从“float”转换到“int”，可能丢失数据
-  (编译源文件“enemy_state_nodes.cpp”)
-  
-D:\code\Game2\Game2\animation.h(51,23): warning C4244: “参数”: 从“float”转换到“int”，可能丢失数据
-  (编译源文件“enemy_state_nodes.cpp”)
-  
-D:\code\Game2\Game2\enemy_state_nodes.cpp(7,22): warning C4244: “参数”: 从“float”转换到“int”，可能丢失数据
-D:\code\Game2\Game2\enemy_state_nodes.cpp(65,22): warning C4244: “参数”: 从“float”转换到“int”，可能丢失数据
-D:\code\Game2\Game2\enemy_state_nodes.cpp(168,22): warning C4244: “参数”: 从“float”转换到“int”，可能丢失数据
-D:\code\Game2\Game2\enemy_state_nodes.cpp(260,22): warning C4244: “参数”: 从“float”转换到“int”，可能丢失数据
-D:\code\Game2\Game2\enemy_state_nodes.cpp(286,22): warning C4244: “参数”: 从“float”转换到“int”，可能丢失数据
-D:\code\Game2\Game2\enemy_state_nodes.cpp(310,22): warning C4244: “参数”: 从“float”转换到“int”，可能丢失数据
-D:\code\Game2\Game2\enemy_state_nodes.cpp(347,28): warning C4244: “参数”: 从“float”转换到“int”，可能丢失数据
-D:\code\Game2\Game2\enemy_state_nodes.cpp(356,29): warning C4244: “参数”: 从“float”转换到“int”，可能丢失数据
-  正在生成代码...
+﻿  barb.cpp
   Game2.vcxproj -> D:\code\Game2\x64\Debug\Game2.exe

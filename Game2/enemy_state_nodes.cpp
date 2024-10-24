@@ -1,7 +1,7 @@
 #include"enemy.h"
 #include"character_manager.h"
 #include"enemy_state_nodes.h"
-
+#include<iostream>
 EnemyAimState::EnemyAimState() {
 	timer.set_one_shot(true);
 	timer.set_wait_time(0.5f);
@@ -13,6 +13,7 @@ EnemyAimState::EnemyAimState() {
 }
 
 void EnemyAimState::on_enter() {
+	//std::cout << "State: Aim\n";
 	CharacterManager::instance()->get_enemy()->set_animation("aim");
 
 	Enemy* enemy = (Enemy*)CharacterManager::instance()->get_enemy();
@@ -31,6 +32,7 @@ void EnemyAimState::on_update(float delta) {
 }
 
 void EnemyDashInAirState::on_enter() {
+	//std::cout << "State: dash_in_air\n";
 	CharacterManager::instance()->get_enemy()->set_animation("dash_in_air");
 
 	Enemy* enemy = (Enemy*)CharacterManager::instance()->get_enemy();
@@ -64,12 +66,14 @@ EnemyDashOnFloorState::EnemyDashOnFloorState() {
 	timer.set_one_shot(true);
 	timer.set_wait_time(0.5f);
 	timer.set_on_timeout([&]() {
+		//std::cout << "timer tick\n";
 		Enemy* enemy = (Enemy*)CharacterManager::instance()->get_enemy();
 		enemy->set_dashing_on_floor(false);
 		});
 }
 
 void EnemyDashOnFloorState::on_enter() {
+	//std::cout << "State: dash_on_floor\n";
 	CharacterManager::instance()->get_enemy()->set_animation("dash_on_floor");
 
 	Enemy* enemy = (Enemy*)CharacterManager::instance()->get_enemy();
@@ -83,7 +87,7 @@ void EnemyDashOnFloorState::on_enter() {
 
 void EnemyDashOnFloorState::on_update(float delta) {
 	Enemy* enemy = (Enemy*)CharacterManager::instance()->get_enemy();
-
+	timer.on_update(delta);
 	if (enemy->get_hp() <= 0)
 		enemy->switch_state("dead");
 	else if (!enemy->get_dashing_on_floor())
@@ -96,6 +100,7 @@ void EnemyDeadState::on_enter() {
 }
 
 void EnemyFallState::on_enter() {
+	//std::cout << "State: fall\n";
 	CharacterManager::instance()->get_enemy()->set_animation("fall");
 }
 
@@ -154,6 +159,7 @@ EnemyIdleState::EnemyIdleState() {
 }
 
 void EnemyIdleState::on_enter() {
+	//std::cout << "State: idle\n";
 	CharacterManager::instance()->get_enemy()->set_animation("idle");
 
 	Enemy* enemy = (Enemy*)CharacterManager::instance()->get_enemy();
@@ -186,6 +192,7 @@ void EnemyIdleState::on_exit() {
 }
 
 void EnemyJumpState::on_enter() {
+	//std::cout << "State: jump\n";
 	CharacterManager::instance()->get_enemy()->set_animation("jump");
 
 	Enemy* enemy = (Enemy*)CharacterManager::instance()->get_enemy();
@@ -219,6 +226,7 @@ void EnemyJumpState::on_update(float delta) {
 }
 
 void EnemyRunState::on_enter() {
+	//std::cout << "State: run\n";
 	CharacterManager::instance()->get_enemy()->set_animation("run");
 	play_audio(_T("enemy_run"), true);
 }
@@ -265,6 +273,7 @@ EnemySquatState::EnemySquatState() {
 }
 
 void EnemySquatState::on_enter() {
+	//std::cout << "State: squat\n";
 	CharacterManager::instance()->get_enemy()->set_animation("squat");
 
 	Enemy* enemy = (Enemy*)CharacterManager::instance()->get_enemy();
@@ -292,6 +301,7 @@ EnemyThrowBarbState::EnemyThrowBarbState() {
 }
 
 void EnemyThrowBarbState::on_enter() {
+	//std::cout << "State: throw_barb\n";
 	CharacterManager::instance()->get_enemy()->set_animation("throw_barb");
 	timer.restart();
 	play_audio(_T("enemy_throw_barbs"), false);
@@ -322,6 +332,7 @@ EnemyThrowSilkState::EnemyThrowSilkState() {
  }
 
 void EnemyThrowSilkState::on_enter() {
+	//std::cout << "State: throw_silk\n";
 	CharacterManager::instance()->get_enemy()->set_animation("throw_silk");
 
 	Enemy* enemy = (Enemy*)CharacterManager::instance()->get_enemy();
@@ -347,15 +358,17 @@ EnemyThrowSwordState::EnemyThrowSwordState() {
 	timer_throw.set_wait_time(0.65f);
 	timer_throw.set_one_shot(true);
 	timer_throw.set_on_timeout([&]() {
+		//std::cout << "timer_throw tick\n";
 		Enemy* enemy = (Enemy*)CharacterManager::instance()->get_enemy();
 		enemy->throw_sword();
 
 		play_audio(_T("enemy_throw_sword"), false);
 		});
 
-	timer_switch.set_wait_time(1.0f);
+	timer_switch.set_wait_time(0.65f);
 	timer_switch.set_one_shot(true);
 	timer_switch.set_on_timeout([&]() {
+		//std::cout << "timer_switch tick\n";
 		Enemy* enemy = (Enemy*)CharacterManager::instance()->get_enemy();
 
 		int rand_num = range_random(0, 100);
@@ -379,6 +392,7 @@ EnemyThrowSwordState::EnemyThrowSwordState() {
 }
 
 void EnemyThrowSwordState::on_enter() {
+	//std::cout << "State: throw_sword\n";
 	CharacterManager::instance()->get_enemy()->set_animation("throw_sword");
 	timer_throw.restart();
 	timer_switch.restart();

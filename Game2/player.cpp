@@ -4,7 +4,7 @@
 #include"bullet_time_manager.h"
 
 #include<cmath>
-
+#include<iostream>
 Player::Player() {
 	is_facing_left = false;
 	position = { 250,200 };
@@ -28,6 +28,7 @@ Player::Player() {
 	timer_roll_cd.set_one_shot(true);
 	timer_roll_cd.set_on_timeout([&]() {
 		is_roll_cd_comp = true;
+		std::cout << "roll Cd is ok" << '\n';
 		});
 
 	timer_attack_cd.set_wait_time(CD_ATTACK);
