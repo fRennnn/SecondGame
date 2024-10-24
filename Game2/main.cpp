@@ -9,6 +9,7 @@
 #include<graphics.h>
 #include<iostream>
 #pragma comment(lib,"MSIMG32.LIB")
+bool is_debug = false;
 struct SmartTimer {
 	std::chrono::time_point<std::chrono::steady_clock> start, end;
 	std::chrono::duration<float> duration;
@@ -47,9 +48,8 @@ int main(int argc, char** argv) {
 	const double Sec = 1.0f;
 	double timer = 0;
 	using namespace::std::chrono;
-	HWND hwnd = initgraph(1280, 720, EW_SHOWCONSOLE);
-	SetWindowText(hwnd, _T("Hollow Katana"));
-	
+	HWND hwnd = initgraph(1280, 720);
+	SetWindowText(hwnd, _T("·à×÷^^"));
 	try {
 		ResourcesManager::instance()->load();
 	}
@@ -86,7 +86,7 @@ int main(int argc, char** argv) {
 		float scaled_delta = BulletTimeManager::instance()->on_update(delta.count());
 
 		//std::cout << delta.count() << "\n";
-		//0.018
+		//0.018  
 		CharacterManager::instance()->on_update(scaled_delta);
 		CollisionManager::instance()->process_collide();  
 
@@ -96,7 +96,10 @@ int main(int argc, char** argv) {
 		//´¦Àí»æÍ¼
 		draw_background();
 		CharacterManager::instance()->on_render();
-		CollisionManager::instance()->on_debug_render();
+		if (is_debug) {
+			CollisionManager::instance()->on_debug_render();
+		}
+		
 		draw_remain_hp();
 
 		FlushBatchDraw();
@@ -109,13 +112,13 @@ int main(int argc, char** argv) {
 		end = std::chrono::high_resolution_clock::now();
 		duration = end - start;
 
-		timer += duration.count();
+		/*timer += duration.count();
 		FPS++;
 		if (timer > Sec) {
 			timer = 0;
 			std::cout << "FPS : " << FPS << "\n";
 			FPS = 0;
-		}
+		}*/
 
 		//1000 / FPS - frame_delta_time
 	}

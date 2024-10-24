@@ -1,0 +1,13 @@
+D:\code\Game2\Game2\barb.cpp;D:\code\Game2\Game2\x64\Release\barb.obj
+D:\code\Game2\Game2\bullet_time_manager.cpp;D:\code\Game2\Game2\x64\Release\bullet_time_manager.obj
+D:\code\Game2\Game2\character.cpp;D:\code\Game2\Game2\x64\Release\character.obj
+D:\code\Game2\Game2\character_manager.cpp;D:\code\Game2\Game2\x64\Release\character_manager.obj
+D:\code\Game2\Game2\collision_manager.cpp;D:\code\Game2\Game2\x64\Release\collision_manager.obj
+D:\code\Game2\Game2\enemy.cpp;D:\code\Game2\Game2\x64\Release\enemy.obj
+D:\code\Game2\Game2\enemy_state_nodes.cpp;D:\code\Game2\Game2\x64\Release\enemy_state_nodes.obj
+D:\code\Game2\Game2\main.cpp;D:\code\Game2\Game2\x64\Release\main.obj
+D:\code\Game2\Game2\player.cpp;D:\code\Game2\Game2\x64\Release\player.obj
+D:\code\Game2\Game2\player_state_nodes.cpp;D:\code\Game2\Game2\x64\Release\player_state_nodes.obj
+D:\code\Game2\Game2\resources_manager.cpp;D:\code\Game2\Game2\x64\Release\resources_manager.obj
+D:\code\Game2\Game2\state_machine.cpp;D:\code\Game2\Game2\x64\Release\state_machine.obj
+D:\code\Game2\Game2\sword.cpp;D:\code\Game2\Game2\x64\Release\sword.obj

@@ -5,6 +5,7 @@
 
 #include<cmath>
 #include<iostream>
+extern bool is_debug;
 Player::Player() {
 	is_facing_left = false;
 	position = { 250,200 };
@@ -28,7 +29,7 @@ Player::Player() {
 	timer_roll_cd.set_one_shot(true);
 	timer_roll_cd.set_on_timeout([&]() {
 		is_roll_cd_comp = true;
-		std::cout << "roll Cd is ok" << '\n';
+		//std::cout << "roll Cd is ok" << '\n';
 		});
 
 	timer_attack_cd.set_wait_time(CD_ATTACK);
@@ -236,6 +237,9 @@ void Player::on_input(const ExMessage& msg) {
 		case 0x53:// 'S'
 		case VK_DOWN:
 			is_roll_key_down = false;
+			break;
+		case 0x51:
+			is_debug = !is_debug;
 			break;
 		}
 		break;

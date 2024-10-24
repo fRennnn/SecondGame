@@ -278,7 +278,7 @@ void Enemy::on_update(float delta) {
 			bool can_remove = !barb->check_valid();
 			if (can_remove) { 
 				delete barb;
-				std::cout << "Delete barb\n";
+				//std::cout << "Delete barb\n";
 			}
 			return can_remove;
 		}), barb_list.end());
@@ -289,7 +289,7 @@ void Enemy::on_update(float delta) {
 			if (can_remove){
 				
 				delete sword;
-				std::cout << "Delete barb\n";
+				//std::cout << "Delete barb\n";
 			}
 			return can_remove;
 		}), sword_list.end());
@@ -308,6 +308,12 @@ void Enemy::on_render() {
 
 	if (is_dashing_in_air || is_dashing_on_floor)
 		current_dash_animation->on_render();
+
+	TCHAR s[10];
+	_stprintf_s(s, _T("HP: %d"), this->hp);
+	setbkmode(TRANSPARENT);
+	settextcolor(RGB(255, 0, 0));
+	outtextxy(this->position.x - 20, this->position.y-170, s);
 }
 
 void Enemy::on_hurt() {
