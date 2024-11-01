@@ -9,6 +9,8 @@ public:
 		pass_time = 0;
 		shotted = false;
 	}
+	//test
+
 
 	void set_wait_time(float val) {
 		wait_time = val;

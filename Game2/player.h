@@ -48,6 +48,14 @@ public:
 		return is_right_key_down - is_left_key_down;
 	}
 
+	void decrease_hp() {
+		if (is_invulnerable) return;
+
+		hp -= 2;
+		if (hp > 0)
+			make_invulnerable();
+		on_hurt();
+	}
 	AttackDir get_attack_dir()const {
 		return attack_dir;
 	}

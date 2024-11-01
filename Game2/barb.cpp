@@ -23,7 +23,7 @@ Barb::Barb() {
 	collision_box->set_size({ 20,20 });
 	collision_box->set_on_collide([&]() {on_break(); });
 
-	timer_idle.set_wait_time((float)range_random(3,10));
+	timer_idle.set_wait_time((float)range_random(3,10));//随机等待3 - 10s 就切换至瞄准状态
 	timer_idle.set_one_shot(true);
 	timer_idle.set_on_timeout([&]() {
 		if (stage == Stage::Idle) {
